@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post compnent matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <header
+      class="header"
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt="Chris Chow"
+          class="headerImage borderCircle"
+          src="/images/profile.jpg"
+        />
+      </a>
+      <h2
+        class="headingLg"
+      >
+        <a
+          class="colorInherit"
+          href="/"
+        >
+          Chris Chow
+        </a>
+      </h2>
+    </header>
+    <main>
+      <article>
+        <h1
+          class="headingXl"
+        >
+          Test Post
+        </h1>
+        <div
+          class="lightText"
+        >
+          <time
+            datetime="2020-01-02"
+          >
+            January 2, 2020
+          </time>
+        </div>
+        <div />
+      </article>
+      <div />
+    </main>
+    <div
+      class="backToHome"
+    >
+      <a
+        href="/"
+      >
+        ← Back to home
+      </a>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -26,9 +26,9 @@ module.exports = {
   ],
   moduleNameMapper: {
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
-    '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
+    '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/file-mock.js',
     ...pathsMappedToModuleName,
   },
   // colocate snapshots with test files, which are colocated with respective source file
-  snapshotResolver: './jestSnapshotResolver.js',
+  snapshotResolver: './jest-snapshot-resolver.js',
 };

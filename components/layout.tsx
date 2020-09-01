@@ -1,14 +1,14 @@
 import { FunctionComponent } from 'react';
 import Head from 'next/head';
 import styles from './layout.module.css';
-import utilStyles from '../styles/utils.module.css';
+import utilStyles from '@styles/utils.module.css';
 import Link from 'next/link';
 
 const name = 'Chris Chow';
 export const siteTitle = name;
 
 type LayoutProps = {
-  home: boolean;
+  home?: boolean;
 };
 
 export const Layout: FunctionComponent<LayoutProps> = ({
@@ -72,5 +72,3 @@ export const Layout: FunctionComponent<LayoutProps> = ({
     </div>
   );
 };
-
-export default Layout;

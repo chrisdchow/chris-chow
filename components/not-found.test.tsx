@@ -1,12 +1,10 @@
 import React from 'react';
 import { render } from '@test/test-utils';
-import { Home } from './home';
+import { NotFound } from './not-found';
 
-describe('Home page', () => {
+describe('NotFound compnent', () => {
   it('matches snapshot', () => {
-    const posts = [];
-
-    const { asFragment } = render(<Home posts={posts} />, {});
+    const { asFragment } = render(<NotFound />, {});
     expect(asFragment()).toMatchSnapshot();
   });
 });

@@ -36,6 +36,18 @@ exports[`Home page matches snapshot 1`] = `
           .)
         </p>
       </section>
+      <section
+        class="headingMd padding1px"
+      >
+        <h2
+          class="headingLg"
+        >
+          Blog
+        </h2>
+        <ul
+          class="list"
+        />
+      </section>
     </main>
   </div>
 </DocumentFragment>

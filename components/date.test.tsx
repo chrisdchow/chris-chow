@@ -1,12 +1,10 @@
 import React from 'react';
 import { render } from '@test/test-utils';
-import { Home } from './home';
+import { Date } from './date';
 
-describe('Home page', () => {
+describe('Date compnent', () => {
   it('matches snapshot', () => {
-    const posts = [];
-
-    const { asFragment } = render(<Home posts={posts} />, {});
+    const { asFragment } = render(<Date dateString='2020-01-01' />, {});
     expect(asFragment()).toMatchSnapshot();
   });
 });
