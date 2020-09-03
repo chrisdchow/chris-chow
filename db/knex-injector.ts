@@ -3,12 +3,12 @@ import { Model, knexSnakeCaseMappers } from 'objection';
 import knexConfig from '../knexfile';
 
 // Initialize knex.
-const knex = Knex({
-  ...knexConfig.development,
+export const knexInstance = Knex({
+  ...knexConfig,
   ...knexSnakeCaseMappers(),
 });
 
-Model.knex(knex);
+Model.knex(knexInstance);
 
 // Error handling.
 //

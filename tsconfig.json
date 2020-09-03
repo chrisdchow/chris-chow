@@ -5,6 +5,9 @@
       "@components/*": [
         "components/*"
       ],
+      "@db/*": [
+        "db/*"
+      ],
       "@lib/*": [
         "lib/*"
       ],

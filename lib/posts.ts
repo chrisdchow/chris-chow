@@ -3,10 +3,17 @@ import path from 'path';
 import matter from 'gray-matter';
 import remark from 'remark';
 import html from 'remark-html';
+import Person from 'models/person';
+import { knexInstance } from '@db/knex-injector';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
-export function getSortedPostsData() {
+export async function getSortedPostsData() {
+  Person.knex(knexInstance);
+  // const chris = await Person.query()
+  //   .where('firstName', 'Chris')
+  //   .orderBy('id');
+
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData: Record<string, any> = fileNames.map((fileName) => {

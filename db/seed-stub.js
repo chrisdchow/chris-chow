@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
-// the seeder expects the exact column name, no caseMapper is available unlike in lib/db.ts
+// the seeder expects the exact column name, no caseMapper is available
 
-import * as Knex from 'knex';
-
-export async function seed(knex: Knex): Promise<void> {
+export async function seed(knex) {
   await knex('persons').del();
   const persons = await knex('persons').insert(
     [

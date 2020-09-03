@@ -1,7 +1,7 @@
 {
   "name": "chris-chow",
   "author": "chrisdchow",
-  "license": "cc-by-4.0",
+  "license": "CC-BY-4.0",
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
@@ -10,9 +10,9 @@
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "lint": "eslint . --ext ts --ext tsx --ext js",
-    "test": "jest",
+    "test": "NODE_ENV=test jest",
     "test-all": "yarn lint && yarn type-check && yarn test",
-    "migrate": "TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }' ts-node node_modules/knex/knex.js migrate:latest"
+    "knex": "grep -v '^#' .env.development | xargs ./node_modules/knex/bin/cli.js --esm"
   },
   "husky": {
     "hooks": {
