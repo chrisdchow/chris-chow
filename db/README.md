@@ -10,7 +10,7 @@ The Knex CLI does not support Typescript AND ESM (ECMAScript modules). They can 
 Typescript requires a workaround using ts-node:
 
 1. `require('ts-node/register')` in knexfile
-2. having ts-node as yet another dependency
+2. having ts-node as yet another dependency (which isn't the worst, especially if scripts are written in ts)
 
 Using ESM:
 
