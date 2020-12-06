@@ -24,16 +24,17 @@ exports[`Home page matches snapshot 1`] = `
         class="headingMd"
       >
         <p>
-          [Your Self Introduction]
+          Philadelphia born and raised software engineer currently based in San Francisco. You may view my resume
+          <a
+            href="/christopher-chow-resume.pdf"
+            target="_blank"
+          >
+            here
+          </a>
+           (last updated May 2020).
         </p>
         <p>
-          (This is a sample website - you’ll be building a site like this on 
-          <a
-            href="https://nextjs.org/learn"
-          >
-            our Next.js tutorial
-          </a>
-          .)
+          This website is primarily a brain of dump.
         </p>
       </section>
       <section
@@ -42,7 +43,7 @@ exports[`Home page matches snapshot 1`] = `
         <h2
           class="headingLg"
         >
-          Blog
+          Posts
         </h2>
         <ul
           class="list"
