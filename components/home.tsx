@@ -2,8 +2,7 @@ import { Layout, siteTitle } from '@components/layout';
 import { FunctionComponent } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Date } from '@components/date';
-import utilStyles from '@styles/utils.module.css';
+import { Date } from '@components/elements/date';
 
 type HomeProps = {
   posts: {
@@ -43,7 +42,7 @@ export const Home: FunctionComponent<HomeProps> = ({ posts, projects }): JSX.Ele
                 <a>{title}</a>
               </Link>
               <br />
-              <small className={utilStyles.lightText}>
+              <small className='text-gray-400'>
                 <Date dateString={date} />
               </small>
             </li>
@@ -59,7 +58,7 @@ export const Home: FunctionComponent<HomeProps> = ({ posts, projects }): JSX.Ele
                 <a>{name}</a>
               </Link>
               <br />
-              <small className={utilStyles.lightText}>
+              <small className='text-gray-400'>
                 <Date dateString={createdAt} />
               </small>
             </li>

@@ -1,5 +1,5 @@
 import { knexInstance } from '@db/knex-injector.mjs';
-import { Project } from '@db/models/project';
+import { Project } from '@models/project';
 
 export async function getProjects(): Promise<any[]> {
   const knex = knexInstance();

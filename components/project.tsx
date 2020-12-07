@@ -18,7 +18,10 @@ export const Project: FunctionComponent<ProjectProps> = ({ project }) => {
       <Head>
         <title>{project.name}</title>
       </Head>
-      <article>{commits}</article>
+      <article>
+        <h2 className='px-3 py-4 text-xl'>{project.name}</h2>
+        <div className='space-y-2'>{commits}</div>
+      </article>
     </Layout>
   );
 };
