@@ -11,19 +11,13 @@ type LayoutProps = {
   home?: boolean;
 };
 
-export const Layout: FunctionComponent<LayoutProps> = ({
-  home,
-  children,
-}): JSX.Element => {
+export const Layout: FunctionComponent<LayoutProps> = ({ home, children }): JSX.Element => {
   return (
     <div className={styles.container}>
       <Head>
         <link rel='icon' href='/favicon.ico' />
         <meta name='description' content='Chris Chow' />
-        <meta
-          property='og:image'
-          content={`https://og-image.now.sh/${encodeURI(siteTitle)}.png`}
-        />
+        <meta property='og:image' content={`https://og-image.now.sh/${encodeURI(siteTitle)}.png`} />
         <meta name='og:title' content={siteTitle} />
         <meta name='twitter:card' content='summary_large_image' />
       </Head>

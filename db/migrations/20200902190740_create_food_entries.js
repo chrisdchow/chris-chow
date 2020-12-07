@@ -5,13 +5,7 @@ export async function up(knex) {
     table.timestamp('updated_at').notNullable().defaultTo(knex.raw('now()'));
     table.decimal('serving').notNullable();
     table.dateTime('consumed_at').notNullable();
-    table
-      .uuid('person_id')
-      .references('id')
-      .inTable('persons')
-      .notNullable()
-      .onDelete('CASCADE')
-      .index();
+    table.uuid('person_id').references('id').inTable('persons').notNullable().onDelete('CASCADE').index();
     table
       .uuid('nutrition_information_id')
       .references('id')
