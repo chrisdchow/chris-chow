@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 // the seeder expects the exact column name, no caseMapper is available
 
 export async function seed(knex) {

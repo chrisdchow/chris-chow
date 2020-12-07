@@ -26,13 +26,13 @@ const knexConfig = {
     },
   },
   migrations: {
-    directory: __dirname + './db/migrations',
+    directory: './db/migrations',
     tableName: 'knex_migrations',
-    stub: __dirname + './db/migration-stub.js',
+    stub: './db/migration-stub.js',
   },
   seeds: {
-    directory: __dirname + './db/seeds',
-    stub: __dirname + './db/seed-stub.js',
+    directory: './db/seeds',
+    stub: './db/seed-stub.js',
   },
 };
 

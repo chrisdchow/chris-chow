@@ -1,11 +1,11 @@
 import { Model, Modifiers } from 'objection';
 import { BaseModel } from './base-model';
-import NutritionInformation from './nutrition-information';
-import Person from './person';
+import { NutritionInformation } from './nutrition-information';
+import { Person } from './person';
 
-export default class FoodEntry extends BaseModel {
-  static get tableName() {
-    return 'food_entries';
+export class FoodEntry extends BaseModel {
+  static get tableName(): string {
+    return 'foodEntries';
   }
 
   static jsonSchema = {
@@ -28,7 +28,7 @@ export default class FoodEntry extends BaseModel {
       relation: Model.BelongsToOneRelation,
       modelClass: Person,
       join: {
-        from: 'food_entries.person_id',
+        from: 'foodEntries.personId',
         to: 'persons.id',
       },
     },
@@ -36,8 +36,8 @@ export default class FoodEntry extends BaseModel {
       relation: Model.BelongsToOneRelation,
       modelClass: NutritionInformation,
       join: {
-        from: 'food_entries.nutrition_information_id',
-        to: 'nutrition_information.id',
+        from: 'foodEntries.nutritionInformationId',
+        to: 'nutritionInformation.id',
       },
     },
   });

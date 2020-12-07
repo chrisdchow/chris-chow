@@ -2,6 +2,8 @@ import Knex from 'knex';
 import Objection from 'objection';
 import knexConfig from '../knexfile.mjs';
 
+// https://vincit.github.io/objection.js/recipes/snake-case-to-camel-case-conversion.html
+// "everything is converted to camel case including properties and identifiers in relationMappings and queries"
 const { knexSnakeCaseMappers } = Objection;
 
 /**

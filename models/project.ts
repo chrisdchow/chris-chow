@@ -1,8 +1,17 @@
 import { Model, Modifiers } from 'objection';
 import { BaseModel } from './base-model';
+import { GitCommit } from './git-commit';
 
 export class Project extends BaseModel {
-  static get tableName() {
+  // these properties exist for application code
+  // the rest (jsonSchema, etc) are for Objection
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  gitCommits: GitCommit[];
+
+  static get tableName(): string {
     return 'projects';
   }
 
@@ -20,10 +29,7 @@ export class Project extends BaseModel {
     searchByName(query, name) {
       query.where((query) => {
         for (const namePart of name.trim().split(/\s+/)) {
-          query.orWhereRaw('lower(??) like ?', [
-            'name',
-            namePart.toLowerCase() + '%',
-          ]);
+          query.orWhereRaw('lower(??) like ?', ['name', namePart.toLowerCase() + '%']);
         }
       });
     },
@@ -35,49 +41,7 @@ export class Project extends BaseModel {
       modelClass: GitCommit,
       join: {
         from: 'projects.id',
-        to: 'git_commits.project_id',
-      },
-    },
-  });
-}
-
-export class GitCommit extends BaseModel {
-  static get tableName() {
-    return 'git_commits';
-  }
-
-  static jsonSchema = {
-    type: 'object',
-    required: ['name', 'commitId', 'timestamp', 'message'],
-
-    properties: {
-      id: { type: 'string', format: 'uuid' },
-      name: { type: 'string' },
-      timestamp: { type: 'string', format: 'date' },
-      message: { type: 'string' },
-    },
-  };
-
-  static modifiers: Modifiers = {
-    searchByName(query, name) {
-      query.where((query) => {
-        for (const namePart of name.trim().split(/\s+/)) {
-          query.orWhereRaw('lower(??) like ?', [
-            'name',
-            namePart.toLowerCase() + '%',
-          ]);
-        }
-      });
-    },
-  };
-
-  static relationMappings = () => ({
-    project: {
-      relation: Model.BelongsToOneRelation,
-      modelClass: Project,
-      join: {
-        from: 'git_commits.project_id',
-        to: 'projects.id',
+        to: 'gitCommits.projectId',
       },
     },
   });

@@ -3,20 +3,10 @@ import path from 'path';
 import matter from 'gray-matter';
 import remark from 'remark';
 import html from 'remark-html';
-import Person from 'models/person';
-import { knexInstance } from '@db/knex-injector.mjs';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
-export async function getSortedPostsData() {
-
-  // const knex = knexInstance();
-  // Person.knex(knex);
-  // const chris = await Person.query()
-  //   .where('firstName', 'Chris')
-  //   .orderBy('id');
-
-
+export async function getPosts(): Promise<any[]> {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData: Record<string, any> = fileNames.map((fileName) => {
@@ -36,6 +26,7 @@ export async function getSortedPostsData() {
       ...matterResult.data,
     };
   });
+
   // Sort posts by date
   return allPostsData.sort((a, b) => {
     if (a.date < b.date) {
@@ -46,7 +37,7 @@ export async function getSortedPostsData() {
   });
 }
 
-export function getAllPostIds() {
+export function getAllPostIds(): any[] {
   const fileNames = fs.readdirSync(postsDirectory);
 
   // Returns an array that looks like this:
@@ -71,7 +62,7 @@ export function getAllPostIds() {
   });
 }
 
-export async function getPostData(id) {
+export async function getPostData(id: string): Promise<any> {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
@@ -79,9 +70,7 @@ export async function getPostData(id) {
   const matterResult = matter(fileContents);
 
   // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
+  const processedContent = await remark().use(html).process(matterResult.content);
   const contentHtml = processedContent.toString();
 
   // Combine the data with the id and contentHtml

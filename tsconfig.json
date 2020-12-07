@@ -11,6 +11,9 @@
       "@lib/*": [
         "lib/*"
       ],
+      "@models/*": [
+        "models/*"
+      ],
       "@styles/*": [
         "styles/*"
       ],
@@ -45,6 +48,5 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.js",
   ]
 }

@@ -1,22 +1,28 @@
 import { Model, Modifiers } from 'objection';
 import { BaseModel } from './base-model';
-import { FoodEntry } from './food-entry';
+import { Project } from './project';
 
-export class NutritionInformation extends BaseModel {
+export class GitCommit extends BaseModel {
+  id: string;
+  hash: string;
+  date: string;
+  message: string;
+  body: string;
+
   static get tableName(): string {
-    return 'nutritionInformation';
+    return 'gitCommits';
   }
 
   static jsonSchema = {
     type: 'object',
-    required: ['name', 'servingSize', 'calories', 'protein'],
+    required: ['name', 'commitId', 'timestamp', 'message'],
 
     properties: {
       id: { type: 'string', format: 'uuid' },
-      name: { type: 'string' },
-      servingSize: { type: 'number' },
-      calories: { type: 'number' },
-      protein: { type: 'number' },
+      hash: { type: 'string' },
+      date: { type: 'string', format: 'date' },
+      message: { type: 'string' },
+      body: { type: 'string' },
     },
   };
 
@@ -31,12 +37,12 @@ export class NutritionInformation extends BaseModel {
   };
 
   static relationMappings = () => ({
-    foodEntries: {
-      relation: Model.HasManyRelation,
-      modelClass: FoodEntry,
+    project: {
+      relation: Model.BelongsToOneRelation,
+      modelClass: Project,
       join: {
-        from: 'nutritionInformation.id',
-        to: 'foodEntries.nutritionInformationId',
+        from: 'gitCommits.projectId',
+        to: 'projects.id',
       },
     },
   });

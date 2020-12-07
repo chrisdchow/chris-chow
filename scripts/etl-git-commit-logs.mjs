@@ -39,12 +39,17 @@ try {
       date,
       message,
       body,
-      projectId: id,
+      project_id: id,
     };
   });
 
+  await createIfNotExistGitCommits(formattedCommits);
+
   await knex.destroy();
-} catch (e) {}
+} catch (e) {
+  console.error('Error:', e);
+  await knex.destroy();
+}
 
 async function findOrCreateProject(projectName) {
   const projects = knex('projects');
@@ -55,6 +60,13 @@ async function findOrCreateProject(projectName) {
   }
 
   return record;
+}
+
+async function createIfNotExistGitCommits(formattedCommits) {
+  const gitCommits = knex('gitCommits').debug();
+  const addedCommits = await gitCommits.insert(formattedCommits).onConflict('hash').ignore();
+
+  return addedCommits;
 }
 
 // assumes single parent history

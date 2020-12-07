@@ -1,9 +1,9 @@
 import { Model, Modifiers } from 'objection';
 import { BaseModel } from './base-model';
-import FoodEntry from './food-entry';
+import { FoodEntry } from './food-entry';
 
-export default class Person extends BaseModel {
-  static get tableName() {
+export class Person extends BaseModel {
+  static get tableName(): string {
     return 'persons';
   }
 
@@ -32,10 +32,7 @@ export default class Person extends BaseModel {
       query.where((query) => {
         for (const namePart of name.trim().split(/\s+/)) {
           for (const column of ['firstName', 'lastName']) {
-            query.orWhereRaw('lower(??) like ?', [
-              column,
-              namePart.toLowerCase() + '%',
-            ]);
+            query.orWhereRaw('lower(??) like ?', [column, namePart.toLowerCase() + '%']);
           }
         }
       });
@@ -48,7 +45,7 @@ export default class Person extends BaseModel {
       modelClass: FoodEntry,
       join: {
         from: 'persons.id',
-        to: 'food_entries.person_id',
+        to: 'foodEntries.personId',
       },
     },
   });

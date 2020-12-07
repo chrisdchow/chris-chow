@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 // the seeder expects the exact column name, no caseMapper is available
 
 export async function seed(knex) {
@@ -31,25 +30,23 @@ export async function seed(knex) {
   ]);
 
   await knex('projects').del();
-  const projects = await knex('projects').insert(
-    [{ name: 'Personal Portfolio' }], ['id'],
-  );
+  const projects = await knex('projects').insert([{ name: 'Seed Project' }], ['id']);
 
   await knex('git_commits').del();
-  await knex('git_commits').insert(
-    [
-      {
-        commit_id: '40HexadecCharsThatSpecifyA160BitSHA1hash',
-        timestamp:  '2020-08-30T17:13:55.000Z',
-        message: 'firstCommit',
-        project_id: projects[0].id,
-      },
-      {
-        commit_id: 'More40HexCharsThatSpecifyA160BitSHA1hash',
-        timestamp:  '2020-08-31T17:13:55.000Z',
-        message: 'secondCommit',
-        project_id: projects[0].id,
-      },
-    ]
-  );
+  await knex('git_commits').insert([
+    {
+      hash: '40HexadecCharsThatSpecifyA160BitSHA1hash',
+      date: '2020-08-30T17:13:55.000Z',
+      message: 'firstCommit',
+      body: '',
+      project_id: projects[0].id,
+    },
+    {
+      hash: 'More40HexCharsThatSpecifyA160BitSHA1hash',
+      date: '2020-08-31T17:13:55.000Z',
+      message: 'secondCommit',
+      body: '',
+      project_id: projects[0].id,
+    },
+  ]);
 }
