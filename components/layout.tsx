@@ -34,7 +34,7 @@ export const Layout: FunctionComponent<LayoutProps> = ({ home, children }): JSX.
   );
 
   return (
-    <div className='max-w-2xl py-0 px-4 mx-auto my-12'>
+    <div className='max-w-xl py-0 px-4 mx-auto my-12'>
       <Head>
         <link rel='icon' href='/favicon.ico' />
         <meta name='description' content='Chris Chow' />

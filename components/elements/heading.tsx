@@ -7,7 +7,7 @@ type HeadingProps = Record<string, unknown>;
  * Headings are unstyled (normalized)
  */
 
-const baseHeadingStyle = 'font-bold leading-loose my-4 mx-0';
+const baseHeadingStyle = 'font-bold leading-loose my-0 mx-0';
 
 export const H1: FunctionComponent<HeadingProps> = ({ children }) => {
   return <h1 className={`${baseHeadingStyle} text-3xl`}>{children}</h1>;

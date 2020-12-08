@@ -1,8 +1,10 @@
 import { FunctionComponent } from 'react';
-import { Layout } from '@components/layout';
+import parse, { domToReact } from 'html-react-parser';
 import Head from 'next/head';
+import { Layout } from '@components/layout';
 import { Date } from '@components/elements/date';
 import { H2 } from '@components/elements/heading';
+import { P } from '@components/elements/paragraph';
 
 type PostProps = {
   postData: {
@@ -14,6 +16,14 @@ type PostProps = {
 };
 
 export const Post: FunctionComponent<PostProps> = ({ postData }) => {
+  const content = parse(postData.contentHtml, {
+    replace: function ({ type, name, children }) {
+      if (type === 'tag' && name === 'p') {
+        return <P>{domToReact(children)}</P>;
+      }
+    },
+  });
+
   return (
     <Layout>
       <Head>
@@ -24,7 +34,7 @@ export const Post: FunctionComponent<PostProps> = ({ postData }) => {
         <div className='text-gray-400'>
           <Date dateString={postData.date} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        {content}
       </article>
     </Layout>
   );

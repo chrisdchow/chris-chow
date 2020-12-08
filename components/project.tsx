@@ -1,8 +1,9 @@
 import { FunctionComponent } from 'react';
-import { Layout } from '@components/layout';
-import { Project as ProjectModel } from '@models/project';
-import { GitCommitCard } from '@components/git-commit-card';
 import Head from 'next/head';
+import { H2 } from '@components/elements/heading';
+import { Layout } from '@components/layout';
+import { GitCommitCard } from '@components/git-commit-card';
+import { Project as ProjectModel } from '@models/project';
 
 type ProjectProps = {
   project: ProjectModel;
@@ -19,8 +20,8 @@ export const Project: FunctionComponent<ProjectProps> = ({ project }) => {
         <title>{project.name}</title>
       </Head>
       <article>
-        <h2 className='px-3 py-4 text-xl'>{project.name}</h2>
-        <div className='space-y-2'>{commits}</div>
+        <H2>{project.name}</H2>
+        <div className='space-y-4 mx-2'>{commits}</div>
       </article>
     </Layout>
   );

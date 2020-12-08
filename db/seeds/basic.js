@@ -30,7 +30,15 @@ export async function seed(knex) {
   ]);
 
   await knex('projects').del();
-  const projects = await knex('projects').insert([{ name: 'Seed Project' }], ['id']);
+  const projects = await knex('projects').insert(
+    [
+      {
+        name: 'Seed Data Project',
+        created_at: new Date(628021800000),
+      },
+    ],
+    ['id'],
+  );
 
   await knex('git_commits').del();
   await knex('git_commits').insert([

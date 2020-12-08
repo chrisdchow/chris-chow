@@ -5,7 +5,7 @@ export async function getProjects(): Promise<any[]> {
   const knex = knexInstance();
   Project.knex(knex);
 
-  const projects = await Project.query().orderBy('createdAt');
+  const projects = await Project.query().orderBy('createdAt', 'desc');
   return projects.map((project) => project.toJSON());
 }
 
